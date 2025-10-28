@@ -14,7 +14,21 @@ connectDB();
 app.use(express.json());
 
 // basic health route
-app.get('/', (req, res) => res.send({ message: 'API is running' }));
+// app.get('/', (req, res) => res.send({ message: 'API is running' }));
+app.get('/', (req, res) => {
+  res.send(`
+    <h2>✅ User Authentication API with JWT</h2>
+    <p>Base URL: <code>https://userauthwithjwt.onrender.com/</code></p>
+    <h3>Available Endpoints:</h3>
+    <ul>
+      <li>POST /api/auth/register</li>
+      <li>POST /api/auth/login</li>
+      <li>GET /api/auth/profile (Protected - requires Bearer Token)</li>
+    </ul>
+    <p>Use Postman to test the routes.</p>
+  `);
+});
+
 
 // routes
 app.use('/api/auth', authRoutes);
